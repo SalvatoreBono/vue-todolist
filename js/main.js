@@ -39,12 +39,16 @@ createApp({
     methods: {
         /* al click del btn eliminare la todo */
         //prendere l'id
-        deleteSingleTodo(singleId) {
-            //Recupera l'indice dell'elemento selezionato
-            //Se "singleTodo.id" è uguale a "singleId" salva nella variabile "idDelete" solo l'indice
-            let iDelete = this.todo.findIndex((singleTodo) => singleTodo.id === singleId);
-            //Grazie a splice possiamo eliminare l'elemento
-            this.todo.splice(iDelete, 1);
+        /*  deleteSingleTodo(singleId) {
+             //Recupera l'indice dell'elemento selezionato
+             //Se "singleTodo.id" è uguale a "singleId" salva nella variabile "idDelete" solo l'indice
+             let iDelete = this.todo.findIndex((singleTodo) => singleTodo.id === singleId);
+             //Grazie a splice possiamo eliminare l'elemento
+             this.todo.splice(iDelete, 1);
+         }, */
+
+        deleteSingleTodo(i) {
+            this.todo.splice(i, 1)
         },
         btnAddTask() {
             //creo una nuova variabile che clona addTask ma eliminando la reattività
