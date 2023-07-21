@@ -1,0 +1,8 @@
+.delete-todo {
+    opacity: 0;
+}
+
+.single-todo:hover .delete-todo {
+    opacity: 1;
+    transition: 0.5s;
+}

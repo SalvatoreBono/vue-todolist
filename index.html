@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://boolean.careers/favicon/favicon.ico"
+    />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div class="col-5 m-auto">
+        <h1 class="text-center">Todolist</h1>
+        <div class="mb-3 d-flex">
+          <!-- Bonus "@keyup.enter="btnAddTask" quando premo il tasto enter aggiunge la task nuova   -->
+          <input
+            type="text"
+            @keyup.enter="btnAddTask"
+            class="form-control"
+            id="formGroupExampleInput"
+            placeholder="Cosa devi fare?"
+            v-model=" addTask.text"
+          />
+          <button @click="btnAddTask" type="button" class="btn btn-success">
+            <i class="fa-solid fa-circle-plus"></i>
+          </button>
+        </div>
+
+        <div class="card">
+          <div class="list-group list-group-flush d-flex">
+            <div v-for="(singleTodo, i) in todo" class="d-flex single-todo">
+              <div class="flex-grow-1">
+                <!-- Se singleTodo.done === true dai text-decoration-line-through altriementi non dare niente  -->
+                <div
+                  :class="singleTodo.done === true ? `text-decoration-line-through` : ``"
+                  class="list-group-item"
+                >
+                  {{singleTodo.text}}
+                </div>
+              </div>
+              <button
+                @click="deleteSingleTodo(singleTodo.id)"
+                type="button"
+                class="btn btn-danger delete-todo"
+              >
+                <i class="fa-solid fa-trash-can"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
